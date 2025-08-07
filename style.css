@@ -225,14 +225,35 @@ nav a:hover {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
+  gap: 8px;
 }
 
+/* Skill items: display inline-block so transforms work cleanly; add hover lift & color */
 .skills span {
   color: #888;
   font-size: 0.9rem;
   font-weight: 500;
-  flex-grow: 1;
+  flex: 0 0 auto;
+  padding: 8px 14px;
   text-align: center;
+  display: inline-block;
+  border-radius: 8px;
+  transition: transform 0.28s cubic-bezier(.2,.9,.3,1), color 0.28s ease, box-shadow 0.28s ease;
+  cursor: default;
+}
+
+.skills span:hover,
+.skills span:focus {
+  transform: translateY(-6px);
+  color: var(--primary-color);
+  box-shadow: 0 10px 20px rgba(252,92,101,0.06);
+}
+
+/* Optional subtle active touch feedback for mobile when :active supported */
+@media (pointer: coarse) {
+  .skills span:active {
+    transform: translateY(-3px);
+  }
 }
 
 .about, .projects, .experience, .contact {
@@ -276,11 +297,12 @@ nav a:hover {
   font-size: 16px;
   font-weight: 500;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-item:hover {
   transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
 }
 
 .service-item img {
@@ -491,4 +513,42 @@ nav a:hover {
   .hero .text h1 {
     font-size: 2rem;
   }
+}
+
+/* Scroll Animations */
+.fade-in, .fade-up, .fade-down {
+  opacity: 0;
+  transition: all 0.8s ease;
+  will-change: transform, opacity;
+}
+
+.fade-in {
+  transform: translateY(20px);
+}
+
+.fade-up {
+  transform: translateY(30px);
+}
+
+.fade-down {
+  transform: translateY(-20px);
+}
+
+.fade-in.visible, .fade-up.visible, .fade-down.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Footer "Get in touch" */
+.footer-touch {
+  background: var(--secondary-color);
+  text-align: center;
+  padding: 15px;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-touch p {
+  margin: 0;
 }
