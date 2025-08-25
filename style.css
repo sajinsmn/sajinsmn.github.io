@@ -401,7 +401,6 @@ nav a:hover::after {
   height: 100%;
 }
 
-/* UPDATED RULE */
 .project-card {
   background: var(--secondary-color);
   backdrop-filter: blur(10px);
@@ -409,7 +408,8 @@ nav a:hover::after {
   padding: 30px;
   border: 1px solid var(--border-color);
   transition: transform 0.3s ease, border-color 0.3s ease;
-  display: flex; /* Ensures inner flexbox works correctly */
+  display: flex;
+  position: relative; /* Make it a positioning context */
 }
 
 .project-card:hover, .experience-card:hover {
@@ -417,7 +417,6 @@ nav a:hover::after {
   border-color: var(--primary-color);
 }
 
-/* UPDATED RULE */
 .project-info {
   display: flex;
   flex-direction: column;
@@ -439,7 +438,7 @@ nav a:hover::after {
 .project-info p { margin-bottom: 20px; }
 
 .tech-stack {
-  margin-top: 15px; /* Adjusted from auto to give some space */
+  margin-top: 15px; 
 }
 
 .tech-stack span {
@@ -454,11 +453,30 @@ nav a:hover::after {
   margin-bottom: 8px;
 }
 
-/* UPDATED RULE */
+/* NEW: Styles for the top-right live demo link */
+.live-demo-link {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  opacity: 0.7;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.live-demo-link:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.live-demo-link img {
+  width: 24px;
+  height: 24px;
+}
+
+/* UPDATED: Simplified style for the bottom GitHub link */
 .project-links {
-  text-align: center; /* Centers the icon horizontally */
-  margin-top: auto;   /* Pushes the icon to the bottom */
-  padding-top: 20px;  /* Adds space above the icon */
+  text-align: center;
+  margin-top: auto;
+  padding-top: 20px;
 }
 
 .project-links a img {
